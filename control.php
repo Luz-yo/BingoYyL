@@ -23,8 +23,8 @@
 
 
 */
-if($_POST['usuario']=="LuzYovanna" and $_POST['contrasena']=="12345678"){
-            header("location:bingo.html");
+if($_POST['usuario']=="ye" and $_POST['contrasena']=="6423"){
+            header("location:inicio.php");
         } else {
             header("location:index.html");
         }
