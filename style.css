@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+header {
+    color: rgba(240, 108, 171, 1);
+    background-color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 30px;
+    float: left;
+    width: 100%;
+    font-size: 50px;
+    border-radius: 200px 0px 200px 0px;
+}
+p {
+    color: #3B220C;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+
+#cen {
+    float: left;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 100px;
+}
+
+footer {
+    color: rgba(240, 108, 171, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding: 30px;
+    float: left;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 0px 200px 0px 200px;
+}
+
+.campos {
+    color: #3B220C;
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+td {
+    width: 4%;
+    min-height: 50px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 50px;
+}
+
+table {
+    width: 60%;
+    margin: 5%;
+    float: left;
+    text-align: center;
+    border-collapse: separate;
+}
+.balotas {
+    background-color: #F06CAB;
+    color: #3B220C;
+}
+
+.BINGO1 {
+    background-color: #ffffa4;
+}
+
+.BINGO2 {
+    background-color: #c0d0f1;
+}
+
+.BINGO3 {
+    background-color: #ffbbbb;
+}
+
+.BINGO4 {
+    background-color: #bfeac8;
+}
+
+.BINGO5 {
+    background-color: #dcd2ea;
+}
+
+.contGen {
+    background-color: #3B220C;
+    float: right;
+    width: 20%;
+    margin: 5%;
+    pading: 20px;
+    text-align: center;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.numBingo {
+    background-color: white;
+    margin: 5px;
+    border-radius: 20px;
+    height: 100px;
+}
+
+body {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient( #FFFFFF, #F9C2DC);
+}

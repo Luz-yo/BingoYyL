@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>login</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Place your stylesheet here-->
+        <link href="style.css" rel="stylesheet" type="text/css">
+
+        <!-- Importar Letras -->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
+        <!-- Importar archivos .js-->
+        <script src="validaciones.js"></script>
+
+        <!-- Icono paigna -->
+        <link rel="shortcut icon" href="icono.png" type="image"/>
+    </head>
+    <body>
+        <header>
+            INICIAR SESIÓN
+        </header>
+
+        <div class="text-center mt-5 pt-5">
+                <div id="cen">
+                    <form class="form-group" action="control.php" method="post">
+                        <p>
+                            USUARIO
+                            <input type="text" name="usuario" class="campos" placeholder="Usuario" id="usuario" onsubmit="validaciones()">
+
+                            CONTRASEÑA
+                            <input type="password" name="contrasena" class="campos" placeholder="Contraseña" id="contrasena" onsubmit="validaciones()">
+                            <br>
+
+                            <input type="submit" class="btn btn-outline-secondary" placeholder="INICIAR SESIÓN" value="Enviar">  
+
+                        </p>
+                    </form>
+                </div>
+            </div>
+        <footer>
+            Luz Yovanna Vivas Meza<br>
+            Proyecto en construccion
+        </footer>
+        <!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        
+    </body>
+</html>
