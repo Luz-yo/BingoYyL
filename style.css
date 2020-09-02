@@ -52,23 +52,26 @@ footer {
 td {
     width: 4%;
     min-height: 50px;
-    height: 50px;
+    height: 30px;
     font-size: 16px;
     border-radius: 50px;
 }
 
 table {
     width: 60%;
-    margin: 5%;
+    margin: 3%;
     float: left;
     text-align: center;
     border-collapse: separate;
 }
+
+/*tablero principal de balotas*/ 
 .balotas {
     background-color: #F06CAB;
     color: #3B220C;
 }
 
+/*balotas elegidas en la tabla principal*/
 .BINGO1 {
     background-color: #ffffa4;
 }
@@ -113,4 +116,20 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-image: linear-gradient( #FFFFFF, #F9C2DC);
+}
+
+/*balotas en la tablas*/
+#tabla {
+    width: 40%;
+    margin-left: 15%;
+    float: left;
+    text-align: center;
+    padding: 0 px;
+}
+
+/*balotas en la tablas*/
+.BT {
+    width: 00%;
+    background-color: #3B220C;
+    color: #F06CAB;
 }
