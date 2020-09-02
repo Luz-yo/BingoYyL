@@ -1,3 +1,4 @@
+
 <?php
 
 require_once 'db.php';
@@ -5,13 +6,21 @@ require_once 'db.php';
 
 class Bingo
 {
-	function inicarBingo()
+	function iniciarBingo()
 	{
-	   $sql = "INSERT INTO Bingo (estado) VALUES ('Proceso')";
+	   $sql = "INSERT INTO `bingo` (`nombre`, `estado`) VALUES ('Prueba Juego', 'Proceso')";
 	   global $conn;
-       if (mysqli_query($conn, $sql)) {
-         echo "";
-        }
+	   $result_bingo = mysqli_query($conn, $sql); 
+         if(!$result_bingo) {
+         die("Query Failed.");
+         }
+
+         $sql ="SELECT MAX(id) AS id FROM bingo";
+         $rs = mysqli_query($conn,$sql);
+         if ($row = mysqli_fetch_assoc($rs)) {
+         $id = trim($row['id']);
+         }
+         return $id;
 	}
 
 	function tiposBingo(){
@@ -20,4 +29,10 @@ class Bingo
 		return  mysqli_query($conn, $sql);
 	}
 
+
+     function listarJuegosActivos(){
+     	$sql = "SELECT * FROM bingo where estado = 'Proceso'";
+	    global $conn;
+		return  mysqli_query($conn, $sql);
+     }
 }?>

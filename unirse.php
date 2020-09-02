@@ -1,6 +1,12 @@
+<?php  
+require_once 'Model/Bingo.php';
+
+$objBingo = new Bingo();
+$juegosActivos = $objBingo->listarJuegosActivos();
+?>
+
 <aside class=" opace main-sidebar">
 
- 
 
   <section class="sidebar">
     <form action="control_Inicio.php" method="POST"> 
@@ -17,10 +23,15 @@
     <ul class="sidebar-menu" data-widget="tree">
      
     </ul>
-    <div class="form-group">
+     <div class="form-group">
       <label class="labelSider">Ingrese Juego</label>
       <select>
-        <option value="0">Jegos Activos</option>
+        <option value="0">Juegos Activos</option>
+       <?php while($row = mysqli_fetch_assoc($juegosActivos)) { ?>
+        <option value="<?php echo $row['id']?>"> <?php
+        $juegos = $row['nombre'].' | '.$row['estado'];
+         echo $juegos?></option>
+      <?php } ?>
       </select>
     </div>
     
