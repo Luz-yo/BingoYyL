@@ -3,8 +3,8 @@
 <html>
 <head>
    <title>BINGO</title>
-   <meta http-equiv="Content-Type" CONTENT="text/html; charset=UTF-8">
-   <meta http-equiv="Content-Style-Type" CONTENT="text/css">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta http-equiv="Content-Style-Type" content="text/css">
     <!--caracteres especiales del español-->
     <meta charset="utf-8">
     <!--pagina responsible-->
@@ -32,12 +32,27 @@
         //arreglo para numeros ya jugados
         var numJugados=[];
         
+        //iniciar sacar balotas
+        var contador=0;
+        function activar(){
+                intervalo = setInterval(nuevaBalota, 200);
+        }
+        
+        //detener sacar balotras
+
+        function desactivar(){
+            clearInterval(intervalo);
+        }
+        
         //numeros aleatorios
+       
         function nuevaBalota() {
-            if(numeros.length>0){
-                var ind =Math.round(Math.random() * (numeros.length));
+            
+            if((numeros.length)>=0){
+                var ind =Math.round(Math.random() * (numeros.length-1));
                 var num =numeros[ind];
                 numeros.splice(ind,1);
+                contador++;
             } else {
                 $("numBingo").html("<p> Estamos<br> Ready<'p>"); 
             }
@@ -45,23 +60,34 @@
             if(num>0 && num<=15) {
                 $("#"+num).css("background-color", "#ffffa4");
                 $("#numBingo").html("<p>B "+num+"<p>");
+                $("#BS"+num).css("background-color", "#ffffa4");
             }
             if(num>15 && num<=30) {
                 $("#"+num).css("background-color", "#c0d0f1");
                 $("#numBingo").html("<p>I "+num+"<p>");
+                $("#BS"+num).css("background-color", "#c0d0f1");
+                
             }
             if(num>30 && num<=45) {
                 $("#"+num).css("background-color", "#ffbbbb");
                 $("#numBingo").html("<p>N "+num+"<p>");
+                $("#BS"+num).css("background-color", "#ffbbbb");
+                
             }
             if(num>45 && num<=60) {
                 $("#"+num).css("background-color", "#bfeac8");
                 $("#numBingo").html("<p>G "+num+"<p>");
+                $("#BS"+num).css("background-color", "#bfeac8");
             }
             if(num>60 && num<=75) {
                 $("#"+num).css("background-color", "#dcd2ea");
                 $("#numBingo").html("<p>O "+num+"<p>");
+                $("#BS"+num).css("background-color", "#dcd2ea");
             }  
+            if(contador==76){ 
+                desactivar();
+            }
+            numJugados.push(num);
         }
     </script>
 </head>
@@ -90,44 +116,85 @@
             <div class="contGen">.
                 <div id="numBingo" class="numBingo"></div>
                 <center><br>
-                    <button onclick="setInterval(nuevaBalota, 1000)" class="btn btn-outline-secondary">Iniciar</button><br><br>
-                    <button onclick="" class="btn btn-outline-secondary">Detener</button>
+                    <button onclick="activar()" class="btn btn-outline-secondary">Iniciar</button><br><br>
+                    <button onclick="desactivar()" class="btn btn-outline-secondary">Detener</button>
                 </center>
             </div>
             
             <div id="tabla">
                 <table>
                     <script>
+                        //arreglos que reciben el valor que puede tomar cada columna
+                        var columnaB=[];
+                        var columnaI=[];
+                        var columnaN=[];
+                        var columnaG=[];
+                        var columnaO=[];
+                        //variables que reciben un numero aleatorio para elegir el indice del arreglo de la respectiva columna
+                        var indiceB=0;
+                        var indiceI=0;
+                        var indiceN=0;
+                        var indiceG=0;
+                        var indiceO=0;
+                        //arreglos que recibe el valor que se vera reflejado en la tabla de juego
                         var c1=[];
-                        for(var i=0;i<5;i++){
-                            c1[i] =Math.round(Math.random()*(16));
-                        }
                         var c2=[];
-                        for(var i=0;i<5;i++){
-                            c2[i] =Math.round(Math.random()*(31) +15);
-                        }
                         var c3=[];
-                        for(var i=0;i<5;i++){
-                            c3[i] =Math.round(Math.random()*(46) +30);
-                        }
                         var c4=[];
-                        for(var i=0;i<5;i++){
-                            c4[i] =Math.round(Math.random()*(61) +45);
-                        }
                         var c5=[];
-                        for(var i=0;i<5;i++){
-                            c5[i] =Math.round(Math.random()*(75) +60);
+                        
+                        for(var i=0; i<15; i++){
+                            columnaB[i] = 1 + i;
+                            columnaI[i] = 16 + i;
+                            columnaN[i] = 31 + i;
+                            columnaG[i] = 46 + i;
+                            columnaO[i] = 61 + i;
                         }
+                        
                         balotasenjuego=[];
-                        //
+                        
+                        for(var i=0; i<5; i++){
+                            
+                            //asignacion de numeros columna B
+                            indiceB = Math.round((Math.random() * (columnaB.length-1)));
+                            c1[i] = columnaB[indiceB];
+                            columnaB.splice(indiceB,1);
+                            
+                            //asignacion de numeros columna I
+                            indiceI = Math.round((Math.random() * (columnaI.length-1)));
+                            c2[i] = columnaI[indiceI];
+                            columnaI.splice(indiceI,1);
+                            
+                            //asignacion de numeros columna N
+                            indiceN = Math.round((Math.random() * (columnaN.length-1)));
+                            c3[i] = columnaN[indiceN];
+                            columnaN.splice(indiceN,1);
+                            
+                            //asignacion de numeros columna G
+                            indiceG = Math.round((Math.random() * (columnaG.length-1)));
+                            c4[i] = columnaG[indiceG];
+                            columnaG.splice(indiceG,1);
+                            
+                            //asignacion de numeros columna O
+                            indiceO = Math.round((Math.random() * (columnaO.length-1)));
+                            c5[i] = columnaO[indiceO];
+                            columnaO.splice(indiceO,1);
+                            
+                            balotasenjuego.push(c1[i]);
+                            balotasenjuego.push(c2[i]);
+                            balotasenjuego.push(c3[i]);
+                            balotasenjuego.push(c4[i]);
+                            balotasenjuego.push(c5[i]);
+                            
+                        }
+
+                        //tabla de juego
                         document.write("<TR><TD class='BINGO1'>"+bingo[1]+"</td><TD class='BINGO2'>"+bingo[2]+"</td><TD class='BINGO3'>"+bingo[3]+"</td><TD class='BINGO4'>"+bingo[4]+"</td><TD class='BINGO5'>"+bingo[5]+"</td></tr>");
-                        document.write("<TR><TD class='BINGO1'>"+c1[0]+"</td><TD class='BINGO2'>"+c2[0]+"</td><TD class='BINGO3'>"+c3[0]+"</td><TD class='BINGO4'>"+c4[0]+"</td><TD class='BINGO5'>"+c5[0]+"</td></tr>");
-                        document.write("<TR><TD class='BINGO1'>"+c1[1]+"</td><TD class='BINGO2'>"+c2[1]+"</td><TD class='BINGO3'>"+c3[1]+"</td><TD class='BINGO4'>"+c4[1]+"</td><TD class='BINGO5'>"+c5[1]+"</td></tr>");
-                        document.write("<TR><TD class='BINGO1'>"+c1[2]+"</td><TD class='BINGO2'>"+c2[2]+"</td><TD class='BINGO3'>"+c3[2]+"</td><TD class='BINGO4'>"+c4[2]+"</td><TD class='BINGO5'>"+c5[2]+"</td></tr>");
-                        document.write("<TR><TD class='BINGO1'>"+c1[3]+"</td><TD class='BINGO2'>"+c2[3]+"</td><TD class='BINGO3'>"+c3[3]+"</td><TD class='BINGO4'>"+c4[3]+"</td><TD class='BINGO5'>"+c5[3]+"</td></tr>");
-                        document.write("<TR><TD class='BINGO1'>"+c1[4]+"</td><TD class='BINGO2'>"+c2[4]+"</td><TD class='BINGO3'>"+c3[4]+"</td><TD class='BINGO4'>"+c4[4]+"</td><TD class='BINGO5'>"+c5[4]+"</td></tr>");
-                        
-                        
+                        document.write("<TR><TD class='BT' id='BS"+c1[0]+"'>"+c1[0]+"</td><TD class='BT' id='BS"+c2[0]+"'>"+c2[0]+"</td><TD class='BT' id='BS"+c3[0]+"'>"+c3[0]+"</td><TD class='BT' id='BS"+c4[0]+"'>"+c4[0]+"</td><TD class='BT' id='BS"+c5[0]+"'>"+c5[0]+"</td></tr>");
+                        document.write("<TR><TD class='BT' id='BS"+c1[1]+"'>"+c1[1]+"</td><TD class='BT' id='BS"+c2[1]+"'>"+c2[1]+"</td><TD class='BT' id='BS"+c3[1]+"'>"+c3[1]+"</td><TD class='BT' id='BS"+c4[1]+"'>"+c4[1]+"</td><TD class='BT' id='BS"+c5[1]+"'>"+c5[1]+"</td></tr>");
+                        document.write("<TR><TD class='BT' id='BS"+c1[2]+"'>"+c1[2]+"</td><TD class='BT' id='BS"+c2[2]+"'>"+c2[2]+"</td><TD class='BT' id='BS"+c3[2]+"'>"+c3[2]+"</td><TD class='BT' id='BS"+c4[2]+"'>"+c4[2]+"</td><TD class='BT' id='BS"+c5[2]+"'>"+c5[2]+"</td></tr>");
+                        document.write("<TR><TD class='BT' id='BS"+c1[3]+"'>"+c1[3]+"</td><TD class='BT' id='BS"+c2[3]+"'>"+c2[3]+"</td><TD class='BT' id='BS"+c3[3]+"'>"+c3[3]+"</td><TD class='BT' id='BS"+c4[3]+"'>"+c4[3]+"</td><TD class='BT' id='BS"+c5[3]+"'>"+c5[3]+"</td></tr>");
+                        document.write("<TR><TD class='BT' id='BS"+c1[4]+"'>"+c1[4]+"</td><TD class='BT' id='BS"+c2[4]+"'>"+c2[4]+"</td><TD class='BT' id='BS"+c3[4]+"'>"+c3[4]+"</td><TD class='BT' id='BS"+c4[4]+"'>"+c4[4]+"</td><TD class='BT' id='BS"+c5[4]+"'>"+c5[4]+"</td></tr>");
                     </script>
                 </table>
             </div>
@@ -135,7 +202,7 @@
         <!--fin contenedor-->
 
     <footer >
-        Luz Yovanna Vivas Meza<br >
+        Luz Yovanna Vivas Meza<br>
         Proyecto en construccion
     </footer>
 </body>
