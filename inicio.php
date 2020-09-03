@@ -1,8 +1,9 @@
 <?php  
+session_start();
 require_once 'Model/Bingo.php';
-
 $objBingo = new Bingo();
 $tiposBingo = $objBingo->tiposBingo();
+$juegosActivos = $objBingo->listarJuegosActivos();
 ?>
 
 <html>
@@ -22,25 +23,29 @@ $tiposBingo = $objBingo->tiposBingo();
     <form action="control_Inicio.php" method="POST"> 
        <div class="user-panel"  id="mostrarOcultar">
        <header>
-       Bienvenido al BINGO
+       Bienvenido al BINGO <?php echo $_SESSION["usuario"] ?>
        </header>
-       <div class="form-group">
-      <label  class="labelSider"><?php echo $objUsuario->id ?></label>
-      </div>
-      <div class="form-group">
-         <label  class="labelSider"><?php echo $objUsuario->usuario ?></label>
+    </div> 
+ <div class="form-group">
+      <div class="caja">
+          <select name="cboJuegosActivos">
+        <option value="0">Juegos Activos</option>
+       <?php while($row = mysqli_fetch_assoc($juegosActivos)) { ?>
+        <option value="<?php echo $row['id']?>"> <?php
+        $juegos = $row['bingo'].' | '.$row['estado'].' | '.$row['usuario'].' | '.$row['tipo'];
+         echo $juegos?></option>
+      <?php } ?>
+      </select>
       </div>
     </div>
-    
-    <input type="text" name="nombrePartida" class="campos" placeholder="Nombre de la partida" id="nombrePartida">
-    
-    <ul class="sidebar-menu" data-widget="tree">
-     
-    </ul>
+    <div class="form-group">
+       <button name="unirse" class="btn btn-outline-secondary" >Unirse</buttom>
+    </div>
+   <input type="text" name="nombrePartida" class="campos" placeholder="Nombre de la partida" id="nombrePartida">
     <div class="form-group">
       <label class="labelSider">Ingrese Juego</label>
       <div class="caja">
-       <select>
+       <select name="cboTipo">
         <option value="0">Formas de Ganar</option>
        <?php while($row = mysqli_fetch_assoc($tiposBingo)) { ?>
         <option value="<?php echo $row['id']?>"> <?php echo $row['nombre']?></option>
@@ -48,9 +53,8 @@ $tiposBingo = $objBingo->tiposBingo();
       </select>
       </div>
     </div>
-    
- <button name="Jugar" class="btn btn-outline-secondary" >Jugar</button>
- <button name="Inicio" class="btn btn-outline-secondary" >Unirse</button>
+     <button name="Jugar" class="btn btn-outline-secondary" >Jugar</button>
+
   
    </form>
   </section>

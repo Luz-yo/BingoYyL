@@ -29,7 +29,7 @@ $juegosActivos = $objBingo->listarJuegosActivos();
         <option value="0">Juegos Activos</option>
        <?php while($row = mysqli_fetch_assoc($juegosActivos)) { ?>
         <option value="<?php echo $row['id']?>"> <?php
-        $juegos = $row['nombre'].' | '.$row['estado'];
+        $juegos = $row['bingo'].' | '.$row['estado'].' | '.$row['usuario'].' | '.$row['tipo'];
          echo $juegos?></option>
       <?php } ?>
       </select>
