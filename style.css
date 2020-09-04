@@ -96,18 +96,20 @@ table {
     background-color: #3B220C;
     float: right;
     width: 20%;
-    margin: 5%;
     pading: 20px;
     text-align: center;
     border-radius: 20px;
     vertical-align: middle;
+    color: rgba(0,0,0,0.0);
 }
 
 .numBingo {
     background-color: white;
-    margin: 5px;
+    margin: 20px;
+    padding: 20px;
     border-radius: 20px;
     height: 100px;
+    
 }
 
 body {

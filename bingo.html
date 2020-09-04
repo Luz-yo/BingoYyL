@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
+
 <head>
-   <title>BINGO</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>BINGO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
     <!--caracteres especiales del español-->
     <meta charset="utf-8">
     <!--pagina responsible-->
@@ -18,141 +18,147 @@
 
     <script>
         //arreglo para los nuemros
-        var numeros=[];
-        for(var i=0;i<=75;i++){
+        var numeros = [];
+        for (var i = 0; i <= 75; i++) {
             numeros.push(i);
         }
 
         //arreglo son las letras BINGO PARA LA TABLA
-        var bingo=["","B","I","N","G","O"]; 
+        var bingo = ["", "B", "I", "N", "G", "O"];
 
-        var n=1; // contador para ubicar las letras
+        var n = 1; // contador para ubicar las letras
 
         //arreglo para numeros ya jugados
-        var numJugados=[];
-        
+        var numJugados = [];
+
         //iniciar sacar balotas
-        var contador=0;
-        function activar(){
-         intervalo = setInterval(nuevaBalota, 2000);
+        var contador = 0;
+
+        function activar() {
+            intervalo = setInterval(nuevaBalota, 2000);
         }
-        
+
         //detener sacar balotras
 
-        function desactivar(){
+        function desactivar() {
             clearInterval(intervalo);
         }
-        
+
         //numeros aleatorios
-       
+
         function nuevaBalota() {
-            
-            if((numeros.length)>=0){
-                var ind =Math.round(Math.random() * (numeros.length-1));
-                var num =numeros[ind];
-                numeros.splice(ind,1);
+
+            if ((numeros.length) >= 0) {
+                var ind = Math.round(Math.random() * (numeros.length - 1));
+                var num = numeros[ind];
+                numeros.splice(ind, 1);
                 contador++;
             } else {
-                $("numBingo").html("<p> Estamos<br> Ready<'p>"); 
+                $("numBingo").html("<p> Estamos<br> Ready<'p>");
             }
-            
-            if(num>0 && num<=15) {
-                $("#"+num).css("background-color", "#ffffa4");
-                $("#numBingo").html("<p>B "+num+"<p>");
-                $("#BS"+num).css("background-color", "#ffffa4");
+
+            if (num > 0 && num <= 15) {
+                $("#" + num).css("background-color", "#ffffa4");
+                $("#numBingo").html("<p>B " + num + "<p>");
+                $("#BS" + num).css("background-color", "#ffffa4");
             }
-            if(num>15 && num<=30) {
-                $("#"+num).css("background-color", "#c0d0f1");
-                $("#numBingo").html("<p>I "+num+"<p>");
-                $("#BS"+num).css("background-color", "#c0d0f1");
-                
+            if (num > 15 && num <= 30) {
+                $("#" + num).css("background-color", "#c0d0f1");
+                $("#numBingo").html("<p>I " + num + "<p>");
+                $("#BS" + num).css("background-color", "#c0d0f1");
+
             }
-            if(num>30 && num<=45) {
-                $("#"+num).css("background-color", "#ffbbbb");
-                $("#numBingo").html("<p>N "+num+"<p>");
-                $("#BS"+num).css("background-color", "#ffbbbb");
-                
+            if (num > 30 && num <= 45) {
+                $("#" + num).css("background-color", "#ffbbbb");
+                $("#numBingo").html("<p>N " + num + "<p>");
+                $("#BS" + num).css("background-color", "#ffbbbb");
+
             }
-            if(num>45 && num<=60) {
-                $("#"+num).css("background-color", "#bfeac8");
-                $("#numBingo").html("<p>G "+num+"<p>");
-                $("#BS"+num).css("background-color", "#bfeac8");
+            if (num > 45 && num <= 60) {
+                $("#" + num).css("background-color", "#bfeac8");
+                $("#numBingo").html("<p>G " + num + "<p>");
+                $("#BS" + num).css("background-color", "#bfeac8");
             }
-            if(num>60 && num<=75) {
-                $("#"+num).css("background-color", "#dcd2ea");
-                $("#numBingo").html("<p>O "+num+"<p>");
-                $("#BS"+num).css("background-color", "#dcd2ea");
-            }  
-            if(contador==76){ 
+            if (num > 60 && num <= 75) {
+                $("#" + num).css("background-color", "#dcd2ea");
+                $("#numBingo").html("<p>O " + num + "<p>");
+                $("#BS" + num).css("background-color", "#dcd2ea");
+            }
+            if (contador == 76) {
                 desactivar();
             }
-           numJugados.push(num);
-           enviarBalota(num);
-           //console.log(num);
+            numJugados.push(num);
+            enviarBalota(num);
+            //console.log(num);
         }
     </script>
 </head>
+
 <body>
     <header>
         BINGO
     </header>
-        <div id="contenedor">
-            <div id="balotas">
-                <table>
-                    <script type="text/javascript">
-                        //arreglo son las letras BINGO PARA LA TABLA
-                        var bingo=["","B","I","N","G","O"]; 
-                        var n=1; // contador para ubicar las letras
-                        for(var f=1; f<=5; f++){
-                            document.write("<TR><TD class='BINGO"+f+"'>"+bingo[f]+"</td>");
-                            for(var c=0; c<15; c++){
-                                document.write("<TD id="+ n +" class='balotas'>"+n+"</td>");
-                                n++;
-                            }
-                        document.write("</tr>");    
+    <div id="contenedor">
+        <div id="balotas">
+            <table>
+                <script type="text/javascript">
+                    //arreglo son las letras BINGO PARA LA TABLA
+                    var bingo = ["", "B", "I", "N", "G", "O"];
+                    var n = 1; // contador para ubicar las letras
+                    for (var f = 1; f <= 5; f++) {
+                        document.write("<TR><TD class='BINGO" + f + "'>" + bingo[f] + "</td>");
+                        for (var c = 0; c < 15; c++) {
+                            document.write("<TD id=" + n + " class='balotas'>" + n + "</td>");
+                            n++;
                         }
-                    </script>
-                </table>
-            </div>
-            <div class="contGen">.
-                <div id="numBingo" class="numBingo" ></div>
-                <center><br>
-                    <button onclick="activar()" class="btn btn-outline-secondary">Iniciar</button><br><br>
-                    <button onclick="desactivar()" class="btn btn-outline-secondary">Detener</button>
-                </center>
-            </div>
-            
-            <div id="tabla">
-                <table>
-                  <script> crearTabla() </script>
-                </table>
-                <button onclick="bingo()" >Bingo</button>
-            </div>
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
         </div>
-        <!--fin contenedor-->
+        <div class="contGen">.
+            <div id="numBingo" class="numBingo"></div>
+            <center><br>
+                <button onclick="activar()" class="btn btn-outline-secondary">Iniciar</button><br><br>
+                <button onclick="desactivar()" class="btn btn-outline-secondary">Detener</button>
+            </center>
+        </div>
 
-    <footer >
+        <div id="tabla">
+            <table>
+                <script>
+                    crearTabla()
+                </script>
+            </table>
+            <button onclick="bingo()">Bingo</button>
+        </div>
+    </div>
+    <!--fin contenedor-->
+
+    <footer>
         Luz Yovanna Vivas Meza<br>
         Proyecto en construccion
     </footer>
 </body>
 <script type="text/javascript">
-function enviarBalota(balotas){
-    console.log(balotas);
-$.ajax({
-type: "POST",
-url: "control_juego.php",
-data: {balotas},
-success:function(datos){
-console.log( "Se guardaron los datos: " + datos);
-},
-error: function (){
-    console.log("No se puede Mostrar");
-}});
-}
-
+    function enviarBalota(balotas) {
+        console.log(balotas);
+        $.ajax({
+            type: "POST",
+            url: "control_juego.php",
+            data: {
+                balotas
+            },
+            success: function(datos) {
+                console.log("Se guardaron los datos: " + datos);
+            },
+            error: function() {
+                console.log("No se puede Mostrar");
+            }
+        });
+    }
 </script>
-  <!-- Importar Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    
+<!-- Importar Jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </html>
