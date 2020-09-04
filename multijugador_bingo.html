@@ -15,6 +15,32 @@
     <!-- Icono paigna -->
     <link rel="shortcut icon" href="icono.png" type="image">
     <script type="text/javascript" src="js/crearTabla.js"></script>
+    <script type="text/javascript">
+
+        function pintarBalotas(num) {
+                if (num > 0 && num <= 15) {
+                    $("#" + num).css("background-color", "#ffffa4");
+                    $("#numBingo").html("<p><br>B<br>" + num + "<p>");
+                    $("#BS" + num).css("background-color", "#ffffa4");
+                } else if (num > 15 && num <= 30) {
+                    $("#" + num).css("background-color", "#c0d0f1");
+                    $("#numBingo").html("<p><br>I<br> " + num + "<p>");
+                    $("#BS" + num).css("background-color", "#c0d0f1");
+                } else if (num > 30 && num <= 45) {
+                    $("#" + num).css("background-color", "#ffbbbb");
+                    $("#numBingo").html("<p><br>N<br> " + num + "<p>");
+                    $("#BS" + num).css("background-color", "#ffbbbb");
+                } else if (num > 45 && num <= 60) {
+                    $("#" + num).css("background-color", "#bfeac8");
+                    $("#numBingo").html("<p><br>G<br> " + num + "<p>");
+                    $("#BS" + num).css("background-color", "#bfeac8");
+                } else if (num > 60 && num <= 75) {
+                    $("#" + num).css("background-color", "#dcd2ea");
+                    $("#numBingo").html("<p><br>O<br> " + num + "<p>");
+                    $("#BS" + num).css("background-color", "#dcd2ea");
+                }
+}
+    </script>
 </head>
 
 <body>
@@ -24,7 +50,19 @@
     <div id="contenedor">
         <div id="balotas">
             <table id="tablaCompleta" name="tablaCompleta">
-
+ <script type="text/javascript">
+                    //arreglo son las letras BINGO PARA LA TABLA
+                    var bingo = ["", "B", "I", "N", "G", "O"];
+                    var n = 1; // contador para ubicar las letras
+                    for (var f = 1; f <= 5; f++) {
+                        document.write("<TR><TD class='BINGO" + f + "'>" + bingo[f] + "</td>");
+                        for (var c = 0; c < 15; c++) {
+                            document.write("<TD id=" + n + " class='balotas'>" + n + "</td>");
+                            n++;
+                        }
+                        document.write("</tr>");
+                    }
+                </script>
             </table>
         </div>
         <div class="contGen">
@@ -59,7 +97,13 @@
             data: "",
             success: function(datos) {
                 console.log(datos);
-                $('#tablaCompleta').html(datos);
+                num = datos.split(",");
+                i = 1;
+                while( i < num.length ){
+                      console.log(num[i]);
+                   pintarBalotas(num[i]);
+                   i++;
+                }
             },
             error: function() {
                 console.log("No se puede Mostrar");
@@ -72,27 +116,14 @@
             type: "POST",
             url: "control_juego.php?pintar=1",
             data: "",
-            success: function(num) {
-                if (num > 0 && num <= 15) {
-                    $("#" + num).css("background-color", "#ffffa4");
-                    $("#numBingo").html("<p><br>B<br>" + num + "<p>");
-                    $("#BS" + num).css("background-color", "#ffffa4");
-                } else if (num > 15 && num <= 30) {
-                    $("#" + num).css("background-color", "#c0d0f1");
-                    $("#numBingo").html("<p><br>I<br> " + num + "<p>");
-                    $("#BS" + num).css("background-color", "#c0d0f1");
-                } else if (num > 30 && num <= 45) {
-                    $("#" + num).css("background-color", "#ffbbbb");
-                    $("#numBingo").html("<p><br>N<br> " + num + "<p>");
-                    $("#BS" + num).css("background-color", "#ffbbbb");
-                } else if (num > 45 && num <= 60) {
-                    $("#" + num).css("background-color", "#bfeac8");
-                    $("#numBingo").html("<p><br>G<br> " + num + "<p>");
-                    $("#BS" + num).css("background-color", "#bfeac8");
-                } else if (num > 60 && num <= 75) {
-                    $("#" + num).css("background-color", "#dcd2ea");
-                    $("#numBingo").html("<p><br>O<br> " + num + "<p>");
-                    $("#BS" + num).css("background-color", "#dcd2ea");
+            success: function(datos) {
+             console.log(datos);
+             num = datos.split(",");
+                i = 1;
+                while( i < num.length ){
+                      console.log(num[i]);
+                   pintarBalotas(num[i]);
+                   i++;
                 }
             },
             error: function() {
@@ -105,7 +136,7 @@
 <script>
     $(document).ready(function() {
         pintarTablaCompleta()
-        setInterval('pintarBalota()', 6000);
+        setInterval('pintarBalota()', 6999);
     });
 </script>
 

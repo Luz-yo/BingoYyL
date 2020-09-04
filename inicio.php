@@ -3,7 +3,7 @@ session_start();
 require_once 'Model/Bingo.php';
 $objBingo = new Bingo();
 $tiposBingo = $objBingo->tiposBingo();
-$juegosActivos = $objBingo->listarJuegosActivos();
+$juegosActivos = $objBingo->listarJuegosActivos($_SESSION['idUsuario']);
 ?>
 
 <html>

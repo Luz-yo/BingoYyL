@@ -35,8 +35,8 @@ class Bingo
 	}
 
 
-     function listarJuegosActivos(){
-     	$sql = "SELECT DISTINCT bingo.id, bingo.estado, bingo.nombre as bingo, usuario, tipos_bingo.nombre as tipo FROM `bingo`,`usuarios`,`tipos_bingo` WHERE bingo.estado = 'Proceso' and bingo.idUsuario = usuarios.id AND bingo.idTipo = tipos_bingo.id";
+     function listarJuegosActivos($idUsuario){
+     	$sql = "SELECT DISTINCT bingo.id, bingo.estado, bingo.nombre as bingo, usuario, tipos_bingo.nombre as tipo FROM `bingo`,`usuarios`,`tipos_bingo` WHERE bingo.estado = 'Proceso' and bingo.idUsuario = usuarios.id AND bingo.idTipo = tipos_bingo.id and bingo.idUsuario != $idUsuario";
 	    global $conn;
 		return  mysqli_query($conn, $sql);
      }
@@ -54,18 +54,15 @@ class Bingo
      function traerBalotas($idBingo){
         $sql = "SELECT idBalota FROM `balotas_bingo` WHERE idBingo = $idBingo and estado = 1";
         global $conn;
-        $reslt_balotas = mysqli_query($conn, $sql);
-         if(!$reslt_balotas) 
-         {
-         die("Query Failed.");
-         }
-        foreach ($reslt_balotas as $key => $value) {
-           $_SESSION[$key] = $value;
-        }
-     }
+        $result_balotas = mysqli_query($conn, $sql);
+          if(!$result_balotas) 
+          {
+          die("Query Failed.");
+          }
+        return $result_balotas;
+       }    
 
      function conectarJugador($idBingo, $idUsuario){
-         $this->traerBalotas($idBingo);
        $sql = "INSERT INTO `jugadores_bingo` (`idBingo`, `idUsuario`) 
              VALUES ( $idBingo,$idUsuario)";
         global $conn;

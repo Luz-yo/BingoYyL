@@ -11,31 +11,19 @@ if ( isset( $_POST['balotas'] ) ) {
     $objBingo->guardarBalotasGeneradas( $id, $balota );
     echo 'Balota sacada '.$balota.' Bingo '.$id;
 } elseif ( isset( $_GET['juegoUsuario'] ) ) {
-    $idBingo  = $_GET['cboJuegosActivos'];
-    //$resultadoBalotas = $objBingo->traerBalotas( $_SESSION['idBingo'] );
-    //die( var_dump( $resultadoBalotas ) );
+    $resultadoBalotas = $objBingo->traerBalotas($_SESSION['idBingo']);
     $cadena = '';
-    $n = 1;
-    $bingo = ['', 'B', 'I', 'N', 'G', 'O'];
-    for ( $f = 1; $f <= 5; $f++ ) {
-        $cadena =  $cadena."<TR><TD class='BINGO".$f."'>".$bingo[$f].'</td>';
-
-        for ( $c = 0; $c<15; $c++ ) {
-            if ( $_SESSION[$n] == $n ) {
-                $cadena = $cadena."<TD id='".$n."' style='background: black' class='balotas'>".$n.'</td>';
-            } else {
-                $cadena = $cadena."<TD id='".$n."' class='balotas'>".$n.'</td>';
-
-                $n++;
-            }
-
-        }
-        $cadena = $cadena.'</tr>';
-
+    while ($ver = mysqli_fetch_row($resultadoBalotas)) {
+        $cadena= $cadena.$ver[0].',';
     }
     echo $cadena;
 } elseif ( isset( $_GET['pintar'] ) ) {
-
+       $resultadoBalotas = $objBingo->traerBalotas($_SESSION['idBingo']);
+    $cadena = '';
+    while ($ver = mysqli_fetch_row($resultadoBalotas)) {
+        $cadena= $cadena.$ver[0].',';
+    }
+    echo $cadena;
 }
 
 ?>
