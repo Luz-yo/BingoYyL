@@ -97,7 +97,8 @@ VALUES
 CREATE TABLE balotas_bingo(
 	idBingo int,
 	idBalota int,
-	estado boolean default false
+	estado boolean default false,
+	update_at DateTime
 );
 
 
@@ -146,10 +147,6 @@ ALTER TABLE bingo
 ADD CONSTRAINT FK_tipoJuego
 FOREIGN KEY(idTipo) REFERENCES tipos_bingo(id);
 
-ALTER TABLE tipos_activos_bingo
-ADD CONSTRAINT FK_tiposActivos
-FOREIGN KEY(idBingo) REFERENCES bingo(id),
-ADD FOREIGN KEY(idTipo) REFERENCES  tipos_bingo(id);
 
 ALTER TABLE Ganadores_bingo
 ADD CONSTRAINT FK_ganadorBingo

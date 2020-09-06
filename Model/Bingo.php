@@ -42,7 +42,10 @@ class Bingo
      }
 
      function guardarBalotasGeneradas($id,$balota){
-     	$sql = "UPDATE `balotas_bingo` SET `estado` = '1' WHERE `balotas_bingo`.`idBingo` = $id and `balotas_bingo`.`idBalota` = $balota ";
+      //'2020-09-06 00:02:49'
+        $hoy = getdate();
+  $update_at = $hoy["year"]."-".$hoy["mon"]."-".$hoy["mday"]." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"];
+     	$sql = "UPDATE `balotas_bingo` SET `estado` = '1', `update_at` = '$update_at' WHERE `balotas_bingo`.`idBingo` = $id and `balotas_bingo`.`idBalota` = $balota ";
      	global $conn;
 	    $result_balotas_bingo = mysqli_query($conn, $sql); 
            if(!$result_balotas_bingo) 
@@ -61,6 +64,17 @@ class Bingo
           }
         return $result_balotas;
        }    
+
+        function traerBalota($idBingo){
+        $sql = "SELECT idBalota FROM `balotas_bingo` WHERE idBingo = $idBingo and estado = 1  ORDER by update_at DESC LIMIT 1";
+        global $conn;
+        $result_balotas = mysqli_query($conn, $sql);
+          if(!$result_balotas) 
+          {
+          die("Query Failed.");
+          }
+        return $result_balotas;
+       }   
 
      function conectarJugador($idBingo, $idUsuario){
        $sql = "INSERT INTO `jugadores_bingo` (`idBingo`, `idUsuario`) 

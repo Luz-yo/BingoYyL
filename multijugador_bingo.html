@@ -93,7 +93,7 @@
     function pintarTablaCompleta() {
         $.ajax({
             type: "POST",
-            url: "control_juego.php?juegoUsuario=1",
+            url: "control_juego.php?pintar=1",
             data: "",
             success: function(datos) {
                 console.log(datos);
@@ -106,7 +106,7 @@
                 }
             },
             error: function() {
-                console.log("No se puede Mostrar");
+                console.log("No se puede Mostrar Tabla");
             }
         });
     }
@@ -114,20 +114,16 @@
     function pintarBalota() {
         $.ajax({
             type: "POST",
-            url: "control_juego.php?pintar=1",
+            url: "control_juego.php?pintar=2",
             data: "",
             success: function(datos) {
-             console.log(datos);
-             num = datos.split(",");
-                i = 1;
-                while( i < num.length ){
-                      console.log(num[i]);
-                   pintarBalotas(num[i]);
-                   i++;
-                }
+             console.log("Datos Consulta "+datos);
+             var numero = parseInt(datos);
+             console.log("Numero Parseado " + numero);
+             pintarBalotas(numero);
             },
             error: function() {
-                console.log("No se puede Mostrar");
+                console.log("No se puede Mostrar Balota");
             }
         });
     }
