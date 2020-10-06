@@ -14,9 +14,10 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <!-- Icono paigna -->
     <link rel="shortcut icon" href="icono.png" type="image">
-    <script type="text/javascript" src="js/crearTabla.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
 
     <script>
+
         //arreglo para los nuemros
         var numeros = [];
         for (var i = 0; i <= 75; i++) {
@@ -35,7 +36,7 @@
         var contador = 0;
 
         function activar() {
-            intervalo = setInterval(nuevaBalota, 7000);
+            intervalo = setInterval(nuevaBalota, 1000);
         }
 
         //detener sacar balotras
@@ -57,36 +58,8 @@
                 $("numBingo").html("<p> Estamos<br> Ready<'p>");
             }
 
-            if (num > 0 && num <= 15) {
-                $("#" + num).css("background-color", "#ffffa4");
-                $("#numBingo").html("<p>B " + num + "<p>");
-                $("#BS" + num).css("background-color", "#ffffa4");
-            }
-            if (num > 15 && num <= 30) {
-                $("#" + num).css("background-color", "#c0d0f1");
-                $("#numBingo").html("<p>I " + num + "<p>");
-                $("#BS" + num).css("background-color", "#c0d0f1");
-
-            }
-            if (num > 30 && num <= 45) {
-                $("#" + num).css("background-color", "#ffbbbb");
-                $("#numBingo").html("<p>N " + num + "<p>");
-                $("#BS" + num).css("background-color", "#ffbbbb");
-
-            }
-            if (num > 45 && num <= 60) {
-                $("#" + num).css("background-color", "#bfeac8");
-                $("#numBingo").html("<p>G " + num + "<p>");
-                $("#BS" + num).css("background-color", "#bfeac8");
-            }
-            if (num > 60 && num <= 75) {
-                $("#" + num).css("background-color", "#dcd2ea");
-                $("#numBingo").html("<p>O " + num + "<p>");
-                $("#BS" + num).css("background-color", "#dcd2ea");
-            }
-            if (contador == 76) {
-                desactivar();
-            }
+            pintarBalotas(num); 
+            
             numJugados.push(num);
             enviarBalota(num);
             //console.log(num);
@@ -97,6 +70,9 @@
 <body>
     <header>
         BINGO
+        <div >
+            <label id="divGanador">Ganador :</label>
+        </div>
     </header>
     <div id="contenedor">
         <div id="balotas">
@@ -130,7 +106,7 @@
                     crearTabla()
                 </script>
             </table>
-            <button onclick="bingo()">Bingo</button>
+            <button onclick="cantarBingo()">Bingo</button>
         </div>
     </div>
     <!--fin contenedor-->
@@ -160,5 +136,10 @@
 </script>
 <!-- Importar Jquery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        pintarTablaCompleta();
+    });
+</script>
 
 </html>

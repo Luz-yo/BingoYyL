@@ -24,12 +24,6 @@ $juegosActivos = $objBingo->listarJuegosActivos($_SESSION['idUsuario']);
        <div class="user-panel"  id="mostrarOcultar">
        <header>
        Bienvenido al BINGO <?php echo $_SESSION["usuario"] ?>
-       <label> <?php 
-       $hoy = getdate();
-       $fecha = $hoy["year"]."-".$hoy["mon"]."-".$hoy["mday"]." ".$hoy["hours"].":".$hoy["minutes"].":".$hoy["seconds"]; 
-   
-
-        echo($fecha);   ?> </label>
        </header>
     </div> 
  <div class="form-group">

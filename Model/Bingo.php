@@ -99,4 +99,14 @@ class Bingo
            }
          }
      }
+
+     function cargarGanador($idBingo, $idUsuario){
+            $sql = "INSERT INTO `Ganadores_bingo` (`idBingo`, `idUsuario`) VALUES ( $idBingo, $idUsuario)";
+       global $conn;
+       $result_balotas_bingo = mysqli_query($conn, $sql); 
+           if(!$result_balotas_bingo) 
+           {
+           die("Query Failed.");
+           }
+         }
 }?>

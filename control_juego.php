@@ -30,6 +30,15 @@ switch ($_GET['pintar']) {
           echo  $ver[0];
           //echo $cadena;
         break;
+        case 3:
+
+          echo  $_SESSION['idTipo'];
+        break;
+
+        case 4:
+         $objBingo->cargarGanador($_SESSION['idBingo'],$_SESSION['idUsuario']); 
+         echo $_SESSION['usuario'];
+        break;
 
 }
 
