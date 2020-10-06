@@ -14,12 +14,15 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <!-- Icono paigna -->
     <link rel="shortcut icon" href="icono.png" type="image">
-    <script type="text/javascript" src="js/validaciones.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
 </head>
 
 <body>
     <header>
         BINGO
+        <div >
+            <label id="divGanador"></label>
+        </div>
     </header>
     <div id="contenedor">
         <div id="balotas">
@@ -41,7 +44,7 @@
         </div>
         <div class="contGen">
             <div id="numBingo" class="numBingo"></div>
-            <button onclick="bingo()">Bingo</button>
+            <button onclick="cantarBingo()">Bingo</button>
         </div>
 
         <div id="tabla">

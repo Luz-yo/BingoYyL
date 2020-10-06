@@ -36,8 +36,15 @@ switch ($_GET['pintar']) {
         break;
 
         case 4:
-         $objBingo->cargarGanador($_SESSION['idBingo'],$_SESSION['idUsuario']); 
+        $estado = $objBingo->validarGanador($_SESSION['idBingo']);
+        if($estado->estado == "Terminado"){
+          echo "Ya hay ganador";
+        }else
+        {
+           $objBingo->cargarGanador($_SESSION['idBingo'],$_SESSION['idUsuario']); 
          echo $_SESSION['usuario'];
+        }
+        
         break;
 
 }

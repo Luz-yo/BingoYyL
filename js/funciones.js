@@ -8,7 +8,7 @@ console.log("Ganador: " + tipoJuego);
      terminarJuego();
     console.log('Ya completaste la columna B');
 }else{
-    console.log('Aun no ganas');
+    alert('Aun no ganas -> completa la columna B');
 }
   break;
 
@@ -17,7 +17,7 @@ console.log("Ganador: " + tipoJuego);
      terminarJuego();
     console.log('Ya completaste la columna I');
 }else{
-    console.log('Aun no ganas');
+    alert('Aun no ganas -> completa la columna I');
 }
   break;
 
@@ -26,7 +26,7 @@ console.log("Ganador: " + tipoJuego);
      terminarJuego();
     console.log('Ya completaste la columna N');
 }else{
-    console.log('Aun no ganas');
+    alert('Aun no ganas -> completaste la columna N');
 }
   break;
 
@@ -35,7 +35,7 @@ console.log("Ganador: " + tipoJuego);
      terminarJuego();
     console.log('Ya completaste la columna G');
 }else{
-    console.log('Aun no ganas');
+     alert('Aun no ganas -> completaste la columna G');
 } 
   break;
 
@@ -44,7 +44,7 @@ console.log("Ganador: " + tipoJuego);
      terminarJuego();
     console.log('Ya completaste la columna O');
 }else{
-    console.log('Aun no ganas');
+    alert('Aun no ganas -> completa la columna O');
 }  break;
 
   case 6:
@@ -52,7 +52,7 @@ console.log("Ganador: " + tipoJuego);
     terminarJuego();
     console.log('Tabla llena');
 }else{
-    console.log('Aun no ganas');
+     alert('Aun no ganas');
 }
   
   break;
@@ -147,7 +147,6 @@ function tengoBalota(num)
 {
     tengo = false;
    balotasenjuego.forEach(function(elemento, indice, array){
-    console.log(elemento);
            if(num == elemento){
             tengo = true;
            }
@@ -175,7 +174,7 @@ function tengoBalota(num)
 
                     if(tengoBalota(num))
                     {
-                     $("#BS" + num).css("background-color", "#ffffa4");
+                     $("#BS" + num).css("background-color", "#c0d0f1");
                      var pos = c2.indexOf(num);
                      c2.splice(pos,1);
                     }
@@ -186,7 +185,7 @@ function tengoBalota(num)
 
                     if(tengoBalota(num))
                     {
-                     $("#BS" + num).css("background-color", "#ffffa4");
+                     $("#BS" + num).css("background-color", "#ffbbbb");
                      var pos = c3.indexOf(num);
                      c3.splice(pos,1);
                     }
@@ -197,7 +196,7 @@ function tengoBalota(num)
 
                     if(tengoBalota(num))
                     {
-                     $("#BS" + num).css("background-color", "#ffffa4");
+                     $("#BS" + num).css("background-color", "#bfeac8");
                      var pos = c4.indexOf(num);
                      c4.splice(pos,1);
                     }
@@ -208,15 +207,12 @@ function tengoBalota(num)
 
                     if(tengoBalota(num))
                     {
-                     $("#BS" + num).css("background-color", "#ffffa4");
+                     $("#BS" + num).css("background-color", "#dcd2ea");
                      var pos = c5.indexOf(num);
                      c5.splice(pos,1);
                     }
 
                 }
-                if (contador == 76) {
-                desactivar();
-            }
     }
 
 

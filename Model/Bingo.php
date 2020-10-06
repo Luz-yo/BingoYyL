@@ -85,7 +85,15 @@ class Bingo
          {
          die("Query Failed.");
          }
-        
+         $sql = "SELECT idTipo FROM `bingo`  
+            WHERE id = $idBingo";
+        global $conn;
+        $result_bingo = mysqli_query($conn, $sql); 
+         if(!$result_bingo) 
+         {
+         die("Query Failed.");
+         }
+        return $result_bingo->fetch_object();;
      }
 
      function cargarBalotas($id){
@@ -108,5 +116,23 @@ class Bingo
            {
            die("Query Failed.");
            }
+       $sql = "UPDATE `bingo` SET `estado` = 'Terminado' WHERE `bingo`.`id` = $idBingo";
+       global $conn;
+       $result_balotas_bingo = mysqli_query($conn, $sql); 
+        if(!$result_balotas_bingo) 
+           {
+           die("Query Failed.");
+           }
          }
+
+        function validarGanador($idBingo){
+           $sql = "SELECT estado FROM `balotas` WHERE idBingo = $idBingo";
+        global $conn;
+        $result_balotas = mysqli_query($conn, $sql);
+          if(!$result_balotas) 
+          {
+          die("Query Failed.");
+          }
+        return $result_balotas->fetch_object();
+       }   
 }?>

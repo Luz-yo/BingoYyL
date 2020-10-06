@@ -1,4 +1,5 @@
-<?php
+
+ <?php
 
     session_start();
     require_once 'Model/Bingo.php';
@@ -16,9 +17,11 @@
     } else if ( isset( $_POST['unirse'] ) ) {
 
         $id = $_POST['cboJuegosActivos'];
+        
         $_SESSION['idBingo'] = $id;
-        $objBingo->conectarJugador( $id, $_SESSION['idUsuario'] );
-
+        $idTipo  =  $objBingo->conectarJugador( $id, $_SESSION['idUsuario'] );
+        
+        $_SESSION['idTipo'] = $idTipo->idTipo;
         header( "location:multijugador_bingo.html?idJuego=$id" );
     } else {
         header( 'location:inicio.php' );
