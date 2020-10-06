@@ -126,7 +126,7 @@ class Bingo
          }
 
         function validarGanador($idBingo){
-           $sql = "SELECT estado FROM `balotas` WHERE idBingo = $idBingo";
+           $sql = "SELECT estado FROM `bingo` WHERE id = $idBingo";
         global $conn;
         $result_balotas = mysqli_query($conn, $sql);
           if(!$result_balotas) 
