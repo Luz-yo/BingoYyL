@@ -7,13 +7,13 @@ function validaciones(){
     if(usuario == "" || contrasena == ""){
         alert("Todos los campos son OBLIGATORIOS");
         return false;
-    } else if(usuario.length<=7){
+    } else if(usuario.length<=1){
         alert("Usuario demasiado corto");
         return false;
     } else if(usuario.length>=21){
         alert("Usuario demasiado largo");
         return false;
-    } else if(contrasena.length<=7){
+    } else if(contrasena.length<=1){
         alert("Contraseña demasiado corta");
         return false;
     } else if(contrasena.length>=21){
